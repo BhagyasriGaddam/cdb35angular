@@ -1,0 +1,8 @@
+<div class="container">
+    <ul class="list-unstyled">
+        <h4>User ID's</h4>
+        <li *ngFor ="let postObj of postArray">
+        <a routerLink="(click)=gotoPostDetails(postObj.id)">{{postObj.id}}</a>
+        </li>
+    </ul>
+</div>

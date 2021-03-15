@@ -1,0 +1,23 @@
+<p>register works!</p>
+<form #formRef="ngForm" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+    
+    <div class="form-group">
+        <input type="text" name="user" id="un" class="form-control" required ngModel #ref1="ngModel" placeholder="username">
+    </div>
+    <p class="text-danger" *ngIf="(ref1.touched||formRef.submitted)&&ref1.errors?.required">*This field is require</p>
+
+    <div class="form-group">
+        <input type="text" name="userid" id="uid" class="form-control"  required minlength="6" pattern="[0-9]+" ngModel #ref2="ngModel" placeholder="userid">
+    </div>
+    <div *ngIf="ref2.invalid&&(ref2.dirty||ref2.touched)">
+        <p class="alert alert-danger" *ngIf="ref2.errors?.required">*this field is required</p>
+        <p class="alert alert-danger" *ngIf="ref2.errors?.minlength">minimum length should have 6 characters</p>
+        <p class="alert alert-danger" *ngIf="ref2.errors?.pattern">Only numbers are accepted</p>
+
+    </div>
+
+
+    <div>
+        <button type="submit">Submit</button>
+    </div> 
+</form>

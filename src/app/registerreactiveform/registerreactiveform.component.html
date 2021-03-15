@@ -1,0 +1,26 @@
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="un">username</label>
+            <input type="text" name="username" id="un" formControlName="username" class="form-control">
+        </div>
+        <!--validators for username-->
+        <!--<p class="text-danger" *ngIf="registerForm.get('username').invalid&&registerForm.get('username').touched">*this field is required</p>-->
+       
+       <div *ngIf="getControls().username.touched && (getControls().username.dirty || getControls().username.invalid)">
+        <p class="text-danger" *ngIf="getControls().username.errors?.required">*This username field is required</p>
+        <p class="text-danger" *ngIf="getControls().username.errors?.minlength">*This username field is required</p>
+
+       </div>
+
+
+
+        <div class="form-group">
+            <label for="uid">userid</label>
+            <input type="text" name="userid" id="uid" formControlName="userid" class="form-control">
+        </div>
+        <div class="form-group">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
